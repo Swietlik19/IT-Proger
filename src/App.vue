@@ -5,8 +5,13 @@
   <p className="error">{{ error }}</p>
   <button @click="sendData()">Send</button>
 
-  <div v-for="(el, index) in this.users" :key="index">
-    <p>{{ el.name }}</p>
+  <div v-if="users.length === 0" className="user">
+    There's no users
+  </div>
+
+  <div v-for="(el, index) in this.users" :key="index" className="user">
+    <h3>{{ el.name }}</h3>
+    <p>{{ el.email }}</p>
   </div>
 </template>
 
