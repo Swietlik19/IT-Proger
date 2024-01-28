@@ -9,14 +9,14 @@
     There's no users
   </div>
 
-  <div v-for="(el, index) in this.users" :key="index" className="user">
-    <h3>{{ el.name }}</h3>
-    <p>{{ el.email }}</p>
-  </div>
+  <User v-for="(el, index) in this.users" :key="index" :user="el" :index="index" :deleteUser="deleteUser"/>
 </template>
 
 <script>
+import User from './components/user.vue';
+
 export default {
+  components: { User },
   data() {
     return {
       users: [],
@@ -49,6 +49,9 @@ export default {
       this.userName = ''
       this.userPass = ''
       this.userEmail = ''
+    },
+    deleteUser(index) {
+      this.users.splice(index, 1)
     }
   }
 }
